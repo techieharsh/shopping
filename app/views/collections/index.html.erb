@@ -1,0 +1,26 @@
+<!--<p id="notice"><%= notice %></p>-->
+<%= image_tag "slide-image.jpg" %><p></p>
+<h6 class="general-title">All Collections</h6>
+<div class="container">
+<div class="row">
+  <% @collections.each do |collection| %>
+    <div class="col-md-6">
+      <div class="thumbnail">
+        <%= image_tag collection.image.url %>
+        <div class="caption">
+          <h3><%= collection.name %></h3>
+          <p><%= number_to_currency(collection.price) %></p>
+          <%= link_to 'Show', collection, class: "btn btn-link" %>
+          <%= link_to 'Edit', edit_collection_path(collection), class: "btn btn-link" %>
+          <%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
+        </div>
+      </div>
+      
+    </div>
+  <%end %>
+</div>
+
+<br>
+
+<%= link_to 'New Collection', new_collection_path, class: "btn btn-link" %>
+</div>
